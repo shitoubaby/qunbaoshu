@@ -7,21 +7,9 @@
 <body>
  
 <p>
-    $task.fetch($request).then($response => {
-    if( $response.headers['Transfer-Encoding'] === 'chunked' ) {
-        delete $response.headers['Transfer-Encoding']
-    }
-    if( $response.headers['Content-Encoding'] === 'gzip' ) {
-        delete $response.headers['Content-Encoding']
-    }
-    delete $response.headers['Content-Length']
-    console.log($response.body)
-    if( $request.url.indexOf('/profile') > -1 ) {        
-        $done($response.body.replace('09-13 18:00:', '09-13 13:00:').replace('"status":3', '"status":2'))
-    } else {
-        $done($response)
-    }
-})
+hostname = form.qun100.com
+
+^https?:\/\/form\.qun100\.com\/v1\/form\/.+\/profile$ url script-analyze-echo-response https://gitees.oss-cn-shenzhen.aliyuncs.com/qx-sc/qun100.js
 </p>
  
 </body>
